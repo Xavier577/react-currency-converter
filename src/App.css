@@ -1,3 +1,47 @@
+* {
+  box-sizing: border-box;
+}
 body {
-  background: linear-gradient(to right, whitesmoke, #111111);
+  background: linear-gradient(to right, #111111, whitesmoke);
+  font-family: "Courier New", Courier, monospace;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+h1,
+p {
+  text-align: center;
+}
+input {
+  border: none;
+  outline: none;
+  height: 30px;
+  border-radius: 10px;
+}
+input:focus {
+  border: 2px solid #333;
+}
+select {
+  padding-left: 10px;
+  margin-left: 10px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background: white;
+  border-radius: 10px;
+}
+button {
+  margin: 10px;
+  margin-left: 80px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+  outline: none;
+}
+button:hover {
+  background-color: black;
+  color: white;
 }
