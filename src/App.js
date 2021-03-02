@@ -9,9 +9,14 @@ function App() {
   const [currencyList, setCurrencyList] = useState([]);
   // data from the api
   useEffect(() => {
-    const data = require("./API.json");
-    setCurrency(data);
-    setCurrencyList([data?.base, ...Object.keys(data?.rates)].sort()); // set current list as array starting with the base currency and adding the rest
+    async function fetchData() {
+      const URL = "https://api.exchangeratesapi.io/latest";
+      const response = await fetch(URL);
+      const data = await response.json();
+      setCurrency(data);
+      setCurrencyList([data?.base, ...Object.keys(data?.rates)].sort()); // set current list as array starting with the base currency and adding the rest
+    }
+    fetchData();
   }, []);
   // selectors
   const input = document.querySelector("#input");
@@ -19,19 +24,21 @@ function App() {
   const currencyFrom = document.querySelector(".currency-from");
   const currencyTo = document.querySelector(".currency-to");
   // Function to convert the currencies
-  const convert = () => {
-    const initialCurrency = currencyFrom.value;
-    const finalCurrency = currencyTo.value;
-    const Rates = currency.rates;
-    if (input.value === "") return;
-    else if (currencyFrom.value === currencyTo.value)
+  const convertForward = () => {
+    let initialCurrency = currencyFrom.value;
+    let finalCurrency = currencyTo.value;
+    let Rates = currency.rates;
+    if (input.value === "") {
+      output.value = "";
+      return;
+    } else if (currencyFrom.value === currencyTo.value) {
       output.value = input.value;
-    else if (currencyTo.value === "EUR")
+    } else if (currencyTo.value === "EUR") {
       output.value =
         parseFloat(input.value) / parseFloat(Rates[initialCurrency]);
-    else if (currencyFrom.value === "EUR")
+    } else if (currencyFrom.value === "EUR") {
       output.value = parseFloat(input.value) * parseFloat(Rates[finalCurrency]);
-    else if (currencyFrom !== "EUR" && currencyTo !== "EUR") {
+    } else if (currencyFrom !== "EUR" && currencyTo !== "EUR") {
       output.value =
         (input.value / Rates[initialCurrency]) * Rates[finalCurrency];
     }
@@ -46,7 +53,7 @@ function App() {
           <button
             onClick={(e) => {
               e.preventDefault();
-              convert();
+              convertForward();
             }}>
             {" "}
             ={" "}
