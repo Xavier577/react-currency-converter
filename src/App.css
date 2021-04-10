@@ -36,15 +36,15 @@ select {
 .convert-button {
   margin: 10px;
   margin-left: 80px;
-  padding: 50px;
+  padding: 5px;
+  width: auto;
   cursor: pointer;
   transition: 0.3s;
   border: none;
   outline: none;
 }
-/*
+
 button:hover {
   background-color: black;
   color: white;
 }
- */
