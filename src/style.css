@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --card-color: #48c49fb7;
+}
+body {
+  background-image: url("./img/money5.jpg");
+  background-size: cover;
+  background-blend-mode: darken;
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  animation-name: slide-image;
+  animation-duration: 60s;
+  animation-iteration-count: infinite;
+  animation-timing-function: step-start;
+}
+
+.App {
+  background: var(--card-color);
+  position: relative;
+  width: 400px;
+  height: 350px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+h1,
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.converting-section {
+  margin-bottom: 80px;
+}
+input {
+  border: none;
+  outline: none;
+  height: 20px;
+  border-bottom: 2px solid gray;
+  background: transparent;
+}
+input[type="number"] {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+input:focus {
+  border-bottom: 2px solid #333;
+}
+select {
+  background: white;
+  padding-left: 10px;
+  margin-left: 10px;
+  height: 20px;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 2px solid #333;
+}
+
+.convert-button {
+  background: none;
+  margin: 10px;
+  margin-left: 80px;
+  font-size: 2rem;
+  padding: 10px;
+  width: auto;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  background-color: var(--card-color);
+  color: white;
+}
+@keyframes slide-image {
+  0% {
+    background-image: url("./img/money1.jpg");
+  }
+  15% {
+    background-image: url("./img/money2.jpg");
+  }
+  50% {
+    background-image: url("./img/money3.jpg");
+  }
+  75% {
+    background-image: url("./img/money4.jpg");
+  }
+
+  100% {
+    background-image: ("./img/money5.jpg");
+  }
+}

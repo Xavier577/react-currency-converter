@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import "./App.css";
+import "./style.css";
 import InitialCurrency from "./component/InitialCurrency";
 import FinalCurrency from "./component/FinalCurrency";
 import "./StaticData.json";
@@ -18,7 +18,7 @@ function App() {
     [...Object.keys(StaticData?.rates)].sort()
   );
   // data from the api
-  useEffect(() => {
+  /*   useEffect(() => {
     async function fetchData() {
       const URL = `https://api.currencyfreaks.com/latest?apikey=${process.env.REACT_APP_CURRENCYFREAKS_API_KEY}`;
       const response = await fetch(URL);
@@ -27,7 +27,7 @@ function App() {
       setCurrencyList([...Object.keys(data?.rates)].sort()); // setting the currency list as an array of currency shortnames in alphabetical order
     }
     fetchData();
-  }, []);
+  }, []); */
   // selectors
   const input = document.querySelector("#input");
   const output = document.querySelector("#output");
@@ -57,8 +57,8 @@ function App() {
   return (
     <Fragment>
       <div className="App">
-        <h1>Jvert</h1>
-        <form>
+        <h1 id="heading-text">Jvert</h1>
+        <form className="converting-section">
           <InitialCurrency currencyOption={currencyList} />
           <button
             className="convert-button"
