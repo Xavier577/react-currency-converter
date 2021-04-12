@@ -4,6 +4,8 @@ import InitialCurrency from "./component/InitialCurrency";
 import FinalCurrency from "./component/FinalCurrency";
 import "./StaticData.json";
 
+const CURRENCYFREAKS_API_KEY = process.env.REACT_APP_CURRENCYFREAKS_API_KEY;
+
 // static data for incase of api blockage or other factors
 function useStaticData() {
   const StaticData = require("./StaticData.json");
@@ -20,11 +22,16 @@ function App() {
   // data from the api
   useEffect(() => {
     async function fetchData() {
-      const URL = `https://api.currencyfreaks.com/latest?apikey=${process.env.REACT_APP_CURRENCYFREAKS_API_KEY}`;
+      const URL = `https://api.currencyfreaks.com/latest?apikey=${CURRENCYFREAKS_API_KEY}`;
+      console.log(URL);
       const response = await fetch(URL);
       const data = await response.json();
-      setCurrency(data);
-      setCurrencyList([...Object.keys(data?.rates)].sort()); // setting the currency list as an array of currency shortnames in alphabetical order
+      if (data) {
+        setCurrency(data);
+        setCurrencyList([...Object.keys(data?.rates)].sort()); // setting the currency list as an array of currency shortnames in alphabetical order
+        return;
+      }
+      return;
     }
     fetchData();
   }, []);
