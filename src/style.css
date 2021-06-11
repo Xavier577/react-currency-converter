@@ -6,7 +6,7 @@
   --card-color: #48c49fb7;
 }
 body {
-  background-image: url("./img/money5.jpg");
+  background-image: url("./assets/img/money5.jpg");
   background-size: cover;
   background-blend-mode: darken;
   font-family: "Courier New", Courier, monospace;
@@ -87,19 +87,19 @@ button:hover {
 }
 @keyframes slide-image {
   0% {
-    background-image: url("./img/money1.jpg");
+    background-image: url("./assets/img/money1.jpg");
   }
   15% {
-    background-image: url("./img/money2.jpg");
+    background-image: url("./assets/img/money2.jpg");
   }
   50% {
-    background-image: url("./img/money3.jpg");
+    background-image: url("./assets/img/money3.jpg");
   }
   75% {
-    background-image: url("./img/money4.jpg");
+    background-image: url("./assets/img/money4.jpg");
   }
 
   100% {
-    background-image: ("./img/money5.jpg");
+    background-image: ("./assets/img/money5.jpg");
   }
 }
