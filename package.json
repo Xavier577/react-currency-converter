@@ -1,47 +1,31 @@
 {
-  "name": "currency-converter",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@types/jest": "^26.0.23",
-    "@types/node": "^14.14.22",
-    "@types/react": "^17.0.9",
-    "@types/react-dom": "^17.0.6",
-    "axios": "^0.21.1",
-    "cra-template": "1.1.2",
-    "express": "^4.17.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.2",
-    "typescript": "^4.3.2"
-  },
+  "name": "react-currency-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "devStart": "nodemon run server.js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node server",
+    "dev": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xavier577/react-currency-converter.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xavier577/react-currency-converter/issues"
+  },
+  "homepage": "https://github.com/xavier577/react-currency-converter#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
+    "dotenv": "^10.0.0",
     "nodemon": "^2.0.7"
   }
 }
