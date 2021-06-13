@@ -38,3 +38,9 @@ export interface SelectorFieldProp {
   selectRef?: RefObject<HTMLSelectElement>;
   currencyOptions: string[];
 }
+export interface TableProp {
+  base: string;
+  rates: {
+    [currency: string]: string;
+  };
+}

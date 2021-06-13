@@ -35,7 +35,6 @@ function App() {
   const outputField = useRef<HTMLInputElement>(null);
   const currencyFrom = useRef<HTMLSelectElement>(null);
   const currencyTo = useRef<HTMLSelectElement>(null);
-
   const fieldRefs = {
     inputField: inputField.current as HTMLInputElement,
     outputField: outputField.current as HTMLInputElement,
@@ -72,7 +71,9 @@ function App() {
             }}
           />
         </Card>
-        <Card>{/*  <RateTable rates={currency?.rates} /> */}</Card>
+        <Card>
+          <RateTable base={currency.base} rates={currency.rates} />
+        </Card>
       </Container>
     </Fragment>
   );

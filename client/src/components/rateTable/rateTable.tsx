@@ -1,13 +1,13 @@
 import React, { FC } from "react";
-import { CurrencyRates } from "../../types/types";
+import { TableProp } from "../../types/types";
 import "./rateTable.css";
 
-const RateTables: FC<CurrencyRates> = ({ rates }) => {
-  const Currencies = [...Object.keys(rates)];
+const RateTables: FC<TableProp> = ({ base, rates }) => {
+  const Currencies = [...Object.keys(rates)].sort();
   return (
     <div>
       <table className="data-table">
-        <caption>Base = USD</caption>
+        <caption>Base: {base}</caption>
         <tr>
           <th>Currency</th>
           <th>Rates</th>
