@@ -8,7 +8,8 @@ import "./inputField.css";
 const ConverterBoard: FC<ConverterBoardChildrenProp> = ({
   FieldRefs,
   SelectorCurrencyOptions,
-  onClick,
+  buttonClickEvent,
+  selectChangeEvent,
 }) => {
   const { InputField, OutputField, CurrencyFrom, CurrencyTo } = FieldRefs;
   return (
@@ -20,14 +21,16 @@ const ConverterBoard: FC<ConverterBoardChildrenProp> = ({
             <SelectorField
               selectRef={CurrencyFrom}
               currencyOptions={SelectorCurrencyOptions}
+              onChange={selectChangeEvent}
             />
           </div>
           <div className="column space">
-            <button onClick={onClick}>Convert</button>
+            <button onClick={buttonClickEvent}>Convert</button>
           </div>
           <div className="column">
             <CurrencyInputField inputRef={OutputField} />
             <SelectorField
+              onChange={selectChangeEvent}
               selectRef={CurrencyTo}
               currencyOptions={SelectorCurrencyOptions}
             />

@@ -1,11 +1,4 @@
-import React, {
-  Dispatch,
-  Fragment,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import AppName from "./components/appname/AppName";
 import { Card, Container } from "./components/containers/containers";
 import ConverterBoard from "./components/conversionBoard/converterBoard";
@@ -26,10 +19,7 @@ async function getData() {
 }
 
 function App() {
-  const [currency, setCurrency] = useState<CurrencyRates>() as [
-    CurrencyRates,
-    Dispatch<SetStateAction<CurrencyRates>>
-  ];
+  const [currency, setCurrency] = useState<CurrencyRates | undefined>();
   const [currencyList, setCurrencyList] = useState<string[]>([""]);
   const inputField = useRef<HTMLInputElement>(null);
   const outputField = useRef<HTMLInputElement>(null);
@@ -65,14 +55,15 @@ function App() {
               CurrencyTo: currencyTo,
             }}
             SelectorCurrencyOptions={currencyList}
-            onClick={(e) => {
+            buttonClickEvent={(e) => {
               e.preventDefault();
               convertCurrency(fieldRefs, currency);
             }}
+            selectChangeEvent={() => convertCurrency(fieldRefs, currency)}
           />
         </Card>
         <Card>
-          <RateTable base={currency.base} rates={currency.rates} />
+          <RateTable base={currency?.base} rates={currency?.rates} />
         </Card>
       </Container>
     </Fragment>

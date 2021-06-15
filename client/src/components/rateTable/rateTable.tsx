@@ -3,19 +3,20 @@ import { TableProp } from "../../types/types";
 import "./rateTable.css";
 
 const RateTables: FC<TableProp> = ({ base, rates }) => {
-  const Currencies = [...Object.keys(rates)].sort();
+  let Currencies: string[];
+  rates ? (Currencies = [...Object.keys(rates)].sort()) : (Currencies = [""]);
   return (
     <div>
       <table className="data-table">
-        <caption>Base: {base}</caption>
+        <caption>Base: {base ? base : null}</caption>
         <tr>
           <th>Currency</th>
           <th>Rates</th>
         </tr>
-        {Currencies.map((currency) => (
+        {Currencies.map((currency: string) => (
           <tr>
             <td>{currency}</td>
-            <td>{rates[currency]}</td>
+            <td>{rates?.[currency]}</td>
           </tr>
         ))}
       </table>

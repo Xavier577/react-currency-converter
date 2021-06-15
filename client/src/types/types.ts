@@ -1,4 +1,9 @@
-import { MouseEventHandler, ReactNode, RefObject } from "react";
+import {
+  ChangeEventHandler,
+  MouseEventHandler,
+  ReactNode,
+  RefObject,
+} from "react";
 
 export interface ContainerProp {
   children?: ReactNode;
@@ -10,7 +15,8 @@ export interface CardProp extends ContainerProp {
 export interface ConverterBoardChildrenProp {
   FieldRefs: InputFieldRefTypes;
   SelectorCurrencyOptions: string[];
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  buttonClickEvent?: MouseEventHandler<HTMLButtonElement>;
+  selectChangeEvent?: ChangeEventHandler<HTMLSelectElement>;
 }
 export interface CurrencyInputFieldProp {
   inputRef?: RefObject<HTMLInputElement>;
@@ -37,10 +43,13 @@ export interface InputFieldRefTypes {
 export interface SelectorFieldProp {
   selectRef?: RefObject<HTMLSelectElement>;
   currencyOptions: string[];
+  onChange?: ChangeEventHandler<HTMLSelectElement>;
 }
 export interface TableProp {
-  base: string;
-  rates: {
-    [currency: string]: string;
-  };
+  base: string | undefined;
+  rates:
+    | {
+        [currency: string]: string;
+      }
+    | undefined;
 }
