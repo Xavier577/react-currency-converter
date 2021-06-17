@@ -13,9 +13,10 @@ export interface CardProp extends ContainerProp {
   variant?: "large" | "medium" | "small" | "custom-size";
 }
 export interface ConverterBoardChildrenProp {
+  base?: string;
+  buttonClickEvent?: MouseEventHandler<HTMLButtonElement>;
   FieldRefs: InputFieldRefTypes;
   SelectorCurrencyOptions: string[];
-  buttonClickEvent?: MouseEventHandler<HTMLButtonElement>;
   selectChangeEvent?: ChangeEventHandler<HTMLSelectElement>;
 }
 export interface CurrencyInputFieldProp {

@@ -1,12 +1,16 @@
 import React, { FC, Fragment } from "react";
 import { Theme } from "../../types/types";
 
-const darkModeIcon: FC<{ theme: Theme }> = ({ theme = "dark" }) => {
+const DarkModeIcon: FC<{ theme?: Theme; className?: string }> = ({
+  theme = "dark",
+  className,
+}) => {
   return (
     <Fragment>
       {theme === "light" ? (
         // light theme varient
         <svg
+          className={className}
           width="70"
           height="66"
           viewBox="0 0 70 66"
@@ -21,6 +25,7 @@ const darkModeIcon: FC<{ theme: Theme }> = ({ theme = "dark" }) => {
       ) : (
         // dark theme varient
         <svg
+          className={className}
           width="70"
           height="66"
           viewBox="0 0 70 66"
@@ -37,4 +42,4 @@ const darkModeIcon: FC<{ theme: Theme }> = ({ theme = "dark" }) => {
   );
 };
 
-export default darkModeIcon;
+export default DarkModeIcon;

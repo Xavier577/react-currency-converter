@@ -1,11 +1,15 @@
 import React, { FC, Fragment } from "react";
 import { Theme } from "../../types/types";
 
-const seperatorIcon: FC<{ theme: Theme }> = ({ theme = "dark" }) => {
+const SeperatorIcon: FC<{ theme?: Theme; className?: string }> = ({
+  theme = "dark",
+  className,
+}) => {
   return (
     <Fragment>
       {theme === "light" ? (
         <svg
+          className={className}
           width="5"
           height="101"
           viewBox="0 0 5 101"
@@ -23,6 +27,7 @@ const seperatorIcon: FC<{ theme: Theme }> = ({ theme = "dark" }) => {
         </svg>
       ) : (
         <svg
+          className={className}
           width="5"
           height="101"
           viewBox="0 0 5 101"
@@ -43,4 +48,4 @@ const seperatorIcon: FC<{ theme: Theme }> = ({ theme = "dark" }) => {
   );
 };
 
-export default seperatorIcon;
+export default SeperatorIcon;

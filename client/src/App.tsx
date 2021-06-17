@@ -5,6 +5,8 @@ import ConverterBoard from "./components/conversionBoard/converterBoard";
 import RateTable from "./components/rateTable/rateTable";
 import { convertCurrency } from "./utils";
 import IllustrationOfCurrencies from "./assets/images/illustrationOfCurrencies";
+import ThemeIconTray from "./components/themeIconTray/ThemeIconTray";
+import Coins from "./assets/images/coins";
 import { CurrencyRates } from "./types/types";
 import "./App.css";
 
@@ -46,7 +48,9 @@ function App() {
     // the defualt theme is dark
     <Fragment>
       <Container className="header-container">
+        <ThemeIconTray />
         <AppName />
+        <Coins className="coin-image-svg" />
       </Container>
       <Container className="app-container">
         <Container className="flexed-container">
@@ -68,9 +72,7 @@ function App() {
           </Card>
         </Container>
         <IllustrationOfCurrencies className="girl-illustration" />
-        <Container className="table-container">
-          {/* <RateTable base={currency?.base} rates={currency?.rates} /> */}
-        </Container>
+        <RateTable base={currency?.base} rates={currency?.rates} />
       </Container>
     </Fragment>
   );

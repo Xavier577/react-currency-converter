@@ -1,1 +1,57 @@
+.table-container {
+  overflow-y: hidden;
+  background: #0d1117;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 350px;
+  height: 500px;
+  z-index: 12;
+}
 
+.table-container:hover {
+  overflow-y: scroll;
+}
+
+/* width */
+.table-container::-webkit-scrollbar {
+  width: 10px;
+  background: #aaaaaa21;
+}
+
+/* Container scroll attribute */
+/* Track */
+.table-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #0d1117c0;
+  border-radius: 5px;
+}
+
+/* Handle */
+.table-container::-webkit-scrollbar-thumb {
+  background: var(--theme-color);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: #ec4224;
+}
+
+table {
+  width: 100%;
+  height: 100%;
+  font-family: var(--nova-flat);
+  color: #0d1117;
+  /* border-collapse: collapse; */
+}
+
+td {
+  background: tomato;
+  padding: 1rem;
+}
+
+tr {
+  height: 4rem;
+}
+
+thead > tr {
+  background: var(--theme-color);
+}

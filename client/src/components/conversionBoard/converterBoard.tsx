@@ -7,6 +7,7 @@ import ConvertIcon from "../../assets/icons/convertIcon";
 import "./inputField.css";
 
 const ConverterBoard: FC<ConverterBoardChildrenProp> = ({
+  base,
   FieldRefs,
   SelectorCurrencyOptions,
   buttonClickEvent,
@@ -17,6 +18,9 @@ const ConverterBoard: FC<ConverterBoardChildrenProp> = ({
     <Fragment>
       <Card variant="medium" className="converter-board">
         <form className="form-layout">
+          <span id="base">
+            Base: <span id="base-currency">{base ? base : "USD"}</span>
+          </span>
           <div className="row">
             <CurrencyInputField inputRef={InputField} />
             <SelectorField
