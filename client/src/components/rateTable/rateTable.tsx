@@ -21,7 +21,9 @@ const RateTables: FC<TableProp> = ({ base, rates }) => {
               {Currencies.map((currency: string) => (
                 <tr key={currency}>
                   <td>{currency}</td>
-                  <td>{rates?.[currency]}</td>
+                  <td>
+                    {rates ? parseFloat(rates[currency]).toPrecision(4) : null}
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -1,5 +1,17 @@
 import { CurrencyRates, FormFieldTypes } from "./types/types";
 
+/* 
+Convert currency function converts the currency by using a simple algorithm
+of converting the given currency to the base currency and then converting from that to the required currency
+using the given rates in the currency rates object that is passed in as an aurgument
+
+for instance,
+if the function is to convert x NGN to EUR
+first NGN would be converted to USD:
+var NGN_to_USD = x / rates['NGN']
+then to EUR:
+var USD_to_EUR = NGN_to_USD * rates['EUR']
+*/
 export function convertCurrency(
   { inputField, outputField, currencyFrom, currencyTo }: FormFieldTypes,
   currencyRate: CurrencyRates | undefined

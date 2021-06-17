@@ -43,15 +43,25 @@ table {
   /* border-collapse: collapse; */
 }
 
-td {
-  background: tomato;
-  padding: 1rem;
+table tr {
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #aaaaaa21;
+}
+
+tr:nth-child(2n) {
+  background: #ffffff21;
 }
 
 tr {
   height: 4rem;
 }
 
+tr {
+  border: 1px solid #0d1117;
+}
 thead > tr {
   background: var(--theme-color);
 }
