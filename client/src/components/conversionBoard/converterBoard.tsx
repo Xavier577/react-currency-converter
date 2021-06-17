@@ -3,6 +3,7 @@ import { ConverterBoardChildrenProp } from "../../types/types";
 import { Card } from "../containers/containers";
 import CurrencyInputField from "./currencyInputField";
 import SelectorField from "./selectorField";
+import ConvertIcon from "../../assets/icons/convertIcon";
 import "./inputField.css";
 
 const ConverterBoard: FC<ConverterBoardChildrenProp> = ({
@@ -15,8 +16,8 @@ const ConverterBoard: FC<ConverterBoardChildrenProp> = ({
   return (
     <Fragment>
       <Card variant="medium" className="converter-board">
-        <form className="flex-space-between">
-          <div className="column">
+        <form className="form-layout">
+          <div className="row">
             <CurrencyInputField inputRef={InputField} />
             <SelectorField
               selectRef={CurrencyFrom}
@@ -24,10 +25,12 @@ const ConverterBoard: FC<ConverterBoardChildrenProp> = ({
               onChange={selectChangeEvent}
             />
           </div>
-          <div className="column space">
-            <button onClick={buttonClickEvent}>Convert</button>
+          <div className="middle-space">
+            <button onClick={buttonClickEvent} className="convert-button">
+              <ConvertIcon className="convert-icon" />
+            </button>
           </div>
-          <div className="column">
+          <div className="row">
             <CurrencyInputField inputRef={OutputField} />
             <SelectorField
               onChange={selectChangeEvent}

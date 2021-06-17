@@ -9,16 +9,20 @@ const RateTables: FC<TableProp> = ({ base, rates }) => {
     <div>
       <table className="data-table">
         <caption>Base: {base ? base : null}</caption>
-        <tr>
-          <th>Currency</th>
-          <th>Rates</th>
-        </tr>
-        {Currencies.map((currency: string) => (
+        <thead>
           <tr>
-            <td>{currency}</td>
-            <td>{rates?.[currency]}</td>
+            <th>Currency</th>
+            <th>Rates(per {base ? base : "usd"})</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {Currencies.map((currency: string) => (
+            <tr key={currency}>
+              <td>{currency}</td>
+              <td>{rates?.[currency]}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

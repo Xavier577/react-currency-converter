@@ -1,10 +1,12 @@
-import React, { Fragment } from "react";
+import React, { FC, Fragment } from "react";
 import "./AppName.css";
 
-const AppName = () => {
+const AppName: FC = () => {
   return (
     <Fragment>
-      <h1 className="app-name">Jvert</h1>
+      <h1 className="app-name">
+        Jver<span id="tee">t</span>
+      </h1>
     </Fragment>
   );
 };

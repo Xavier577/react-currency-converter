@@ -4,8 +4,9 @@ import { Card, Container } from "./components/containers/containers";
 import ConverterBoard from "./components/conversionBoard/converterBoard";
 import RateTable from "./components/rateTable/rateTable";
 import { convertCurrency } from "./utils";
-import "./App.css";
+import IllustrationOfCurrencies from "./assets/images/illustrationOfCurrencies";
 import { CurrencyRates } from "./types/types";
+import "./App.css";
 
 async function getData() {
   let response = await fetch("/rates", {
@@ -35,7 +36,6 @@ function App() {
   useEffect(() => {
     getData().then((data: CurrencyRates | undefined) => {
       if (data) {
-        console.log(data);
         setCurrency(data);
         setCurrencyList([...Object.keys(data.rates)].sort());
       }
@@ -43,28 +43,34 @@ function App() {
   }, []);
 
   return (
+    // the defualt theme is dark
     <Fragment>
-      <Container className="app-container">
+      <Container className="header-container">
         <AppName />
-        <Card>
-          <ConverterBoard
-            FieldRefs={{
-              InputField: inputField,
-              OutputField: outputField,
-              CurrencyFrom: currencyFrom,
-              CurrencyTo: currencyTo,
-            }}
-            SelectorCurrencyOptions={currencyList}
-            buttonClickEvent={(e) => {
-              e.preventDefault();
-              convertCurrency(fieldRefs, currency);
-            }}
-            selectChangeEvent={() => convertCurrency(fieldRefs, currency)}
-          />
-        </Card>
-        <Card>
-          <RateTable base={currency?.base} rates={currency?.rates} />
-        </Card>
+      </Container>
+      <Container className="app-container">
+        <Container className="flexed-container">
+          <Card variant="medium" className="converter-board-container">
+            <ConverterBoard
+              FieldRefs={{
+                InputField: inputField,
+                OutputField: outputField,
+                CurrencyFrom: currencyFrom,
+                CurrencyTo: currencyTo,
+              }}
+              SelectorCurrencyOptions={currencyList}
+              buttonClickEvent={(e) => {
+                e.preventDefault();
+                convertCurrency(fieldRefs, currency);
+              }}
+              selectChangeEvent={() => convertCurrency(fieldRefs, currency)}
+            />
+          </Card>
+        </Container>
+        <IllustrationOfCurrencies className="girl-illustration" />
+        <Container className="table-container">
+          {/* <RateTable base={currency?.base} rates={currency?.rates} /> */}
+        </Container>
       </Container>
     </Fragment>
   );

@@ -1,8 +1,65 @@
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+}
 select {
-  /* for Firefox */
+  padding-top: 1rem;
+  /* removes default arrow icon for Firefox */
   -moz-appearance: none;
-  /* for Chrome */
+  /* removes default arrow icon  for Chrome */
   -webkit-appearance: none;
   border: none;
   outline: none;
+  font-family: var(--nova-flat);
+  background: transparent;
+  color: white;
+}
+
+.row {
+  display: flex;
+  background: #aaaaaa54;
+  padding: 0.2rem;
+}
+/* input field for currency value input */
+.currency-input-field > input {
+  background: #06070c48;
+  padding: 1rem;
+  color: white;
+  font-size: 1rem;
+  font-family: var(--roboto);
+  width: 70%;
+  border: none;
+  outline: none;
+}
+/* use the theme color to highlight the input field on focus */
+.currency-input-field > input:focus {
+  outline: 1px solid var(--theme-color);
+}
+
+/* Removing default arrow from number input field */
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* For Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.convert-button {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.convert-icon {
+  height: 2.5rem;
+  width: 2.5rem;
 }

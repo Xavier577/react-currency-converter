@@ -1,7 +1,11 @@
 .app-name {
   text-align: center;
-  color: #07070c;
+  color: var(--primary-text-dark);
   font-size: 3rem;
   font-weight: 500;
   font-family: "nova square", monospace;
+}
+
+#tee {
+  color: var(--theme-color);
 }

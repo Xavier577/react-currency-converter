@@ -53,3 +53,5 @@ export interface TableProp {
       }
     | undefined;
 }
+
+export type Theme = "light" | "dark";
