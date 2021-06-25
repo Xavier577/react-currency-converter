@@ -57,8 +57,9 @@ table tr {
   background: #aaaaaa21;
 }
 
+tr,
 td {
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 tr:nth-child(2n) {

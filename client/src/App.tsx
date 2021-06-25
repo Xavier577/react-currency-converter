@@ -8,6 +8,7 @@ import IllustrationOfCurrencies from "./assets/images/illustrationOfCurrencies";
 import ThemeIconTray from "./components/themeIconTray/ThemeIconTray";
 import Coins from "./assets/images/coins";
 import { CurrencyRates } from "./types/types";
+import BarChart from "./components/chart/BarChart";
 import "./App.css";
 
 async function getData() {
@@ -36,12 +37,24 @@ function App() {
   };
 
   useEffect(() => {
-    getData().then((data: CurrencyRates | undefined) => {
+       getData().then((data: CurrencyRates | undefined) => {
       if (data) {
         setCurrency(data);
         setCurrencyList([...Object.keys(data.rates)].sort());
       }
     });
+
+   /*
+      use mock data in development
+      async function fetchMockData() {
+      // fetching mock data from json server in development to prevent excessive api calls
+      let res = await fetch("http://localhost:8080/apidata");
+      let apidata = (await res.json()) as CurrencyRates[]; // json sever returns an array of objects
+      let data = apidata[0];
+      setCurrency(data);
+      setCurrencyList([...Object.keys(data.rates)].sort());
+    }
+    fetchMockData(); */
   }, []);
 
   return (
@@ -53,7 +66,7 @@ function App() {
         <Coins className="coin-image-svg" />
       </Container>
       <Container className="app-container">
-        <Container className="flexed-container">
+        <Container className="flex-column">
           <Card variant="medium" className="converter-board-container">
             <ConverterBoard
               FieldRefs={{
@@ -70,6 +83,11 @@ function App() {
               selectChangeEvent={() => convertCurrency(fieldRefs, currency)}
             />
           </Card>
+          <BarChart
+            base={currency?.base}
+            className="bar-chart"
+            rates={currency?.rates}
+          />
         </Container>
         <IllustrationOfCurrencies className="girl-illustration" />
         <RateTable base={currency?.base} rates={currency?.rates} />
