@@ -4,17 +4,25 @@ import { TableProp } from "../../types/types";
 import { getRatePerBaseCurrency } from "../../utils";
 import "./rateTable.css";
 
-const RateTables: FC<TableProp> = ({ base, rates }) => {
+const RateTables: FC<TableProp> = ({ base, rates, tableTheme }) => {
   let Currencies: string[] | undefined;
   rates
     ? (Currencies = [...Object.keys(rates)].sort())
     : (Currencies = undefined);
   return (
     <Fragment>
-      <Container className="table-container">
+      <Container
+        className={`table-container ${
+          tableTheme === "light"
+            ? "table-container-light"
+            : "table-container-dark"
+        }`}
+      >
         <div>
-          <table className="data-table">
-            <thead>
+          <table
+            className={tableTheme === "light" ? "light-table" : "dark-table"}
+          >
+            <thead className="table-head">
               <tr>
                 <th>Currency</th>
                 <th>Rates(per {base ? base : "USD"})</th>

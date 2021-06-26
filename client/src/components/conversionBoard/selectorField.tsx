@@ -5,10 +5,18 @@ const SelectorField: FC<SelectorFieldProp> = ({
   selectRef,
   currencyOptions,
   onChange,
+  theme,
 }) => {
   return (
     <div>
-      <select ref={selectRef} name="select-currency" onChange={onChange}>
+      <select
+        ref={selectRef}
+        className={
+          theme === "light" ? "currency-select-light" : "currency-select-dark"
+        }
+        name="select-currency"
+        onChange={onChange}
+      >
         {currencyOptions.map((currency) => (
           <option key={currency}>{currency}</option>
         ))}

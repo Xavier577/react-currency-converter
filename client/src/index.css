@@ -1,1 +1,27 @@
+/* imported fonts */
+@import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nova+Flat&family=Nova+Square&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+/* Variables */
+:root {
+  /* Fonts */
+  --nova-square: "Nova Square", monospace;
+  --nova-flat: "Nova flat", monospace;
+  --roboto: "Roboto", sans-serif;
+
+  /* Primary theme color */
+  --theme-color: #68d1fc;
+  /* Light theme */
+  --main-light: #ffffff;
+  --primary-text: #000000;
+  --secondary-text: #ffffff;
+  --table-row-blur: #c0c0c0dc;
+  --table-row: #b0adad;
+
+  /* Dark theme */
+  --main-dark: #0d1117;
+  --primary-text-dark: #ffffff;
+  --secondary-text-dark: #000000;
+  --table-row-dim-dark: #ffffff21;
+}

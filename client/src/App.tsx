@@ -25,6 +25,7 @@ async function getData() {
 function App() {
   const [currency, setCurrency] = useState<CurrencyRates | undefined>();
   const [currencyList, setCurrencyList] = useState<string[]>([""]);
+  const [isDark, setIsDark] = useState(true);
   const inputField = useRef<HTMLInputElement>(null);
   const outputField = useRef<HTMLInputElement>(null);
   const currencyFrom = useRef<HTMLSelectElement>(null);
@@ -37,16 +38,15 @@ function App() {
   };
 
   useEffect(() => {
-       getData().then((data: CurrencyRates | undefined) => {
+    /*      getData().then((data: CurrencyRates | undefined) => {
       if (data) {
         setCurrency(data);
         setCurrencyList([...Object.keys(data.rates)].sort());
       }
-    });
+    }); */
 
-   /*
-      use mock data in development
-      async function fetchMockData() {
+    //use mock data in development
+    async function fetchMockData() {
       // fetching mock data from json server in development to prevent excessive api calls
       let res = await fetch("http://localhost:8080/apidata");
       let apidata = (await res.json()) as CurrencyRates[]; // json sever returns an array of objects
@@ -54,43 +54,66 @@ function App() {
       setCurrency(data);
       setCurrencyList([...Object.keys(data.rates)].sort());
     }
-    fetchMockData(); */
+    fetchMockData();
   }, []);
 
   return (
     // the defualt theme is dark
     <Fragment>
-      <Container className="header-container">
-        <ThemeIconTray />
-        <AppName />
-        <Coins className="coin-image-svg" />
-      </Container>
-      <Container className="app-container">
-        <Container className="flex-column">
-          <Card variant="medium" className="converter-board-container">
-            <ConverterBoard
-              FieldRefs={{
-                InputField: inputField,
-                OutputField: outputField,
-                CurrencyFrom: currencyFrom,
-                CurrencyTo: currencyTo,
-              }}
-              SelectorCurrencyOptions={currencyList}
-              buttonClickEvent={(e) => {
-                e.preventDefault();
-                convertCurrency(fieldRefs, currency);
-              }}
-              selectChangeEvent={() => convertCurrency(fieldRefs, currency)}
+      <Container
+        className={` App ${isDark ? "App-dark-mode" : "App-light-mode"}`}
+      >
+        <Container className="header-container">
+          <ThemeIconTray
+            theme={isDark ? "dark" : "light"}
+            lightModeEventHandler={() => setIsDark(false)}
+            darkModeEVentHandler={() => setIsDark(true)}
+          />
+          <AppName className={isDark ? "app-name-dark" : "app-name-light"} />
+          <Container className="coin-container">
+            <Coins className="coin-image-svg" />
+          </Container>
+        </Container>
+        <Container className="features-container">
+          <Container className="flex-column">
+            <Card
+              variant="medium"
+              className={`converter-board-container ${
+                isDark ? "dark-theme" : "light-theme"
+              }`}
+            >
+              <ConverterBoard
+                theme={isDark ? "dark" : "light"}
+                FieldRefs={{
+                  InputField: inputField,
+                  OutputField: outputField,
+                  CurrencyFrom: currencyFrom,
+                  CurrencyTo: currencyTo,
+                }}
+                SelectorCurrencyOptions={currencyList}
+                buttonClickEvent={(e) => {
+                  e.preventDefault();
+                  convertCurrency(fieldRefs, currency);
+                }}
+                selectChangeEvent={() => convertCurrency(fieldRefs, currency)}
+              />
+            </Card>
+            <BarChart
+              base={currency?.base}
+              className="bar-chart"
+              rates={currency?.rates}
             />
-          </Card>
-          <BarChart
+          </Container>
+          <IllustrationOfCurrencies
+            className="girl-illustration"
+            theme={isDark ? "dark" : "light"}
+          />
+          <RateTable
             base={currency?.base}
-            className="bar-chart"
             rates={currency?.rates}
+            tableTheme={isDark ? "dark" : "light"}
           />
         </Container>
-        <IllustrationOfCurrencies className="girl-illustration" />
-        <RateTable base={currency?.base} rates={currency?.rates} />
       </Container>
     </Fragment>
   );

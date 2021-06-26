@@ -18,9 +18,11 @@ export interface ConverterBoardChildrenProp {
   FieldRefs: InputFieldRefTypes;
   SelectorCurrencyOptions: string[];
   selectChangeEvent?: ChangeEventHandler<HTMLSelectElement>;
+  theme?: Theme;
 }
 export interface CurrencyInputFieldProp {
   inputRef?: RefObject<HTMLInputElement>;
+  theme?: Theme;
 }
 export interface CurrencyRates {
   date: string;
@@ -45,14 +47,26 @@ export interface SelectorFieldProp {
   selectRef?: RefObject<HTMLSelectElement>;
   currencyOptions: string[];
   onChange?: ChangeEventHandler<HTMLSelectElement>;
+  theme?: Theme;
 }
 export interface TableProp {
-  base: string | undefined;
-  rates:
-    | {
-        [currency: string]: string;
-      }
-    | undefined;
+  base?: string;
+  rates?: {
+    [currency: string]: string;
+  };
+  tableTheme?: Theme;
 }
 
 export type Theme = "light" | "dark";
+
+export interface ThemeIconTrayProp {
+  theme?: Theme;
+  lightModeEventHandler?: MouseEventHandler<SVGSVGElement>;
+  darkModeEVentHandler?: MouseEventHandler<SVGSVGElement>;
+}
+
+export interface ThemeToggleButton {
+  theme?: Theme;
+  className?: string;
+  clickEvent?: MouseEventHandler<SVGSVGElement>;
+}

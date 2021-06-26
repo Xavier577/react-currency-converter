@@ -12,6 +12,7 @@ const ConverterBoard: FC<ConverterBoardChildrenProp> = ({
   SelectorCurrencyOptions,
   buttonClickEvent,
   selectChangeEvent,
+  theme,
 }) => {
   const { InputField, OutputField, CurrencyFrom, CurrencyTo } = FieldRefs;
   return (
@@ -22,8 +23,9 @@ const ConverterBoard: FC<ConverterBoardChildrenProp> = ({
             Base: <span id="base-currency">{base ? base : "USD"}</span>
           </span>
           <div className="row">
-            <CurrencyInputField inputRef={InputField} />
+            <CurrencyInputField theme={theme} inputRef={InputField} />
             <SelectorField
+              theme={theme}
               selectRef={CurrencyFrom}
               currencyOptions={SelectorCurrencyOptions}
               onChange={selectChangeEvent}
@@ -35,8 +37,9 @@ const ConverterBoard: FC<ConverterBoardChildrenProp> = ({
             </button>
           </div>
           <div className="row">
-            <CurrencyInputField inputRef={OutputField} />
+            <CurrencyInputField theme={theme} inputRef={OutputField} />
             <SelectorField
+              theme={theme}
               onChange={selectChangeEvent}
               selectRef={CurrencyTo}
               currencyOptions={SelectorCurrencyOptions}
