@@ -38,14 +38,14 @@ function App() {
   };
 
   useEffect(() => {
-    /*      getData().then((data: CurrencyRates | undefined) => {
+    getData().then((data: CurrencyRates | undefined) => {
       if (data) {
         setCurrency(data);
         setCurrencyList([...Object.keys(data.rates)].sort());
       }
-    }); */
+    });
 
-    //use mock data in development
+    /*   //use mock data in development
     async function fetchMockData() {
       // fetching mock data from json server in development to prevent excessive api calls
       let res = await fetch("http://localhost:8080/apidata");
@@ -54,7 +54,7 @@ function App() {
       setCurrency(data);
       setCurrencyList([...Object.keys(data.rates)].sort());
     }
-    fetchMockData();
+    fetchMockData(); */
   }, []);
 
   return (
