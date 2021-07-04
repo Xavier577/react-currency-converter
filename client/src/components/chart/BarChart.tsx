@@ -1,7 +1,7 @@
 import React, { FC, Fragment } from "react";
 import { Container } from "../containers/containers";
 import { Bar } from "react-chartjs-2";
-import { getTopFiveCurrencies } from "../../utils";
+import { getTopTenCurrencies } from "../../utils";
 import { CurrencyRates } from "../../types/types";
 
 const BarChart: FC<{
@@ -9,23 +9,23 @@ const BarChart: FC<{
   rates?: CurrencyRates["rates"];
   base?: CurrencyRates["base"];
 }> = ({ className, rates, base }) => {
-  let topFiveCurrenciesData: {[currency: string]: number}
-  let topFiveCurrencies: string[] = []
-  let topFiveRPB: number[] = []
+  let topTenCurrenciesData: { [currency: string]: number };
+  let topTenCurrencies: string[] = [];
+  let topTenRPB: number[] = [];
   if (rates && base) {
-    topFiveCurrenciesData = getTopFiveCurrencies(rates, base);
-    topFiveCurrencies = [...Object.keys(topFiveCurrenciesData)]
-    topFiveRPB = [...Object.values(topFiveCurrenciesData)]
+    topTenCurrenciesData = getTopTenCurrencies(rates, base);
+    topTenCurrencies = [...Object.keys(topTenCurrenciesData)];
+    topTenRPB = [...Object.values(topTenCurrenciesData)];
   }
   const state = {
-    labels: [...topFiveCurrencies],
+    labels: [...topTenCurrencies],
     datasets: [
       {
-        label: `Rate Per ${base? base : "USD"}`,
+        label: `Rate Per ${base ? base : "USD"}`,
         backgroundColor: "rgba(75,192,192,1)",
         borderColor: "rgba(0,0,0,1)",
         borderWidth: 2,
-        data: [...topFiveRPB],
+        data: [...topTenRPB],
       },
     ],
   };
@@ -38,9 +38,10 @@ const BarChart: FC<{
           options={{
             title: {
               display: true,
-              text: `Top Five Currencies according to Rate per  ${base? base : "USD"} `,
+              text: `Top Five Currencies according to Rate per  ${
+                base ? base : "USD"
+              } `,
               fontSize: 20,
-            
             },
             legend: {
               display: true,

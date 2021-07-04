@@ -16,7 +16,6 @@ body {
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   justify-content: flex-start;
   gap: 3.9rem;
 }
@@ -88,6 +87,6 @@ body {
 
 .girl-illustration {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   height: 20rem;
 }

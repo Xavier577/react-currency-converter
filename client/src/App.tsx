@@ -44,13 +44,13 @@ function App() {
         setCurrencyList([...Object.keys(data.rates)].sort());
       }
     });
-
     /*   //use mock data in development
     async function fetchMockData() {
       // fetching mock data from json server in development to prevent excessive api calls
       let res = await fetch("http://localhost:8080/apidata");
       let apidata = (await res.json()) as CurrencyRates[]; // json sever returns an array of objects
       let data = apidata[0];
+      console.log(data);
       setCurrency(data);
       setCurrencyList([...Object.keys(data.rates)].sort());
     }

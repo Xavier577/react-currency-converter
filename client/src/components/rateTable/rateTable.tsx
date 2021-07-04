@@ -36,7 +36,7 @@ const RateTables: FC<TableProp> = ({ base, rates, tableTheme }) => {
                     <td>
                       {rates && base
                         ? getRatePerBaseCurrency(currency, rates, base).toFixed(
-                            4
+                            6
                           )
                         : null}
                     </td>
