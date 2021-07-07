@@ -1,17 +1,5 @@
 import { CurrencyRates, FormFieldTypes } from "./types/types";
 
-/* 
-Convert currency function converts the currency by using a simple algorithm
-of converting the given currency to the base currency and then converting from that to the required currency
-using the given rates in the currency rates object that is passed in as an aurgument
-
-for instance,
-if the function is to convert x NGN to EUR
-first NGN would be converted to USD:
-var NGN_to_USD = x / rates['NGN']
-then to EUR:
-var USD_to_EUR = NGN_to_USD * rates['EUR']
-*/
 export function convertCurrency(
   { inputField, outputField, currencyFrom, currencyTo }: FormFieldTypes,
   currencyRate: CurrencyRates | undefined
@@ -72,10 +60,9 @@ export function getTopTenCurrencies(
   return { ...Object.fromEntries(topTenCurrencyEntries) };
 }
 
-// sorting function according to highest rates per base currency
 function sortAccordingToRPB(data: { [currency: string]: number }) {
   let clonedData = { ...data }; // cloning the data to prevent direct mutation of data
-  let dataEntries = [...Object.entries(clonedData)]; // get arr of (key, value) pairs
+  let dataEntries = [...Object.entries(clonedData)];
   let sortedEntries = [...dataEntries].sort((a, b) => (a[1] > b[1] ? -1 : 1)); // sort pairs according to the value which will be in the second index in this case
-  return { ...Object.fromEntries(sortedEntries) }; // returns an sorted object of currencies according to rate per base currency
+  return { ...Object.fromEntries(sortedEntries) };
 }

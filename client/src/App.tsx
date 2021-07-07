@@ -1,14 +1,15 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import AppName from "./components/appname/AppName";
-import { Card, Container } from "./components/containers/containers";
-import ConverterBoard from "./components/conversionBoard/converterBoard";
-import RateTable from "./components/rateTable/rateTable";
-import { convertCurrency } from "./utils";
-import IllustrationOfCurrencies from "./assets/images/illustrationOfCurrencies";
-import ThemeIconTray from "./components/themeIconTray/ThemeIconTray";
-import Coins from "./assets/images/coins";
-import { CurrencyRates } from "./types/types";
 import BarChart from "./components/chart/BarChart";
+import { Card, Container } from "./components/containers/containers";
+import { convertCurrency } from "./utils";
+import { CurrencyRates } from "./types/types";
+import Coins from "./assets/images/coins";
+import ConverterBoard from "./components/conversionBoard/converterBoard";
+import IllustrationOfCurrencies from "./assets/images/illustrationOfCurrencies";
+import RateTable from "./components/rateTable/rateTable";
+import ThemeIconTray from "./components/themeIconTray/ThemeIconTray";
+import useThemeStore from "./hooks/useThemeStore";
 import "./App.css";
 
 async function getData() {
@@ -18,14 +19,20 @@ async function getData() {
       "Content-Type": "application/json",
     },
   });
-  let data = (await response).json();
+  let data = response.json();
   return data;
 }
 
 function App() {
+  // states
   const [currency, setCurrency] = useState<CurrencyRates | undefined>();
   const [currencyList, setCurrencyList] = useState<string[]>([""]);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(
+    JSON.parse(localStorage.getItem("isDark") as string) ?? true
+  );
+  useThemeStore(isDark);
+
+  // Refs
   const inputField = useRef<HTMLInputElement>(null);
   const outputField = useRef<HTMLInputElement>(null);
   const currencyFrom = useRef<HTMLSelectElement>(null);
@@ -44,6 +51,7 @@ function App() {
         setCurrencyList([...Object.keys(data.rates)].sort());
       }
     });
+
     /*   //use mock data in development
     async function fetchMockData() {
       // fetching mock data from json server in development to prevent excessive api calls
@@ -66,8 +74,8 @@ function App() {
         <Container className="header-container">
           <ThemeIconTray
             theme={isDark ? "dark" : "light"}
-            lightModeEventHandler={() => setIsDark(false)}
-            darkModeEVentHandler={() => setIsDark(true)}
+            lightModeEventHandler={() => setIsDark(() => false)}
+            darkModeEVentHandler={() => setIsDark(() => true)}
           />
           <AppName className={isDark ? "app-name-dark" : "app-name-light"} />
           <Container className="coin-container">
