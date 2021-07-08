@@ -52,7 +52,7 @@ function App() {
       }
     });
 
-    /*   //use mock data in development
+    /*     //use mock data in development
     async function fetchMockData() {
       // fetching mock data from json server in development to prevent excessive api calls
       let res = await fetch("http://localhost:8080/apidata");
