@@ -13,7 +13,7 @@
     "url": "git+https://github.com/xavier577/react-currency-converter.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Joseph Tsegen",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/xavier577/react-currency-converter/issues"
@@ -22,10 +22,10 @@
   "dependencies": {
     "axios": "^0.21.1",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "dotenv": "^10.0.0",
     "nodemon": "^2.0.7"
   }
 }

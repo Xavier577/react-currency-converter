@@ -1,12 +1,13 @@
-if (process.env.NODE_ENV !== "production") require("dotenv").config();
-
 const express = require("express");
+const dotenv = require("dotenv");
 const axios = require("axios");
 const cors = require("cors");
 const path = require("path");
 const app = express();
-const PORT = process.env.PORT || 5000;
 
+dotenv.config();
+
+const PORT = process.env.PORT || 5000;
 const CURRENCYFREAKS_API_KEY = process.env.CURRENCYFREAKS_API_KEY;
 const url = `https://api.currencyfreaks.com/latest?apikey=${CURRENCYFREAKS_API_KEY}`;
 
