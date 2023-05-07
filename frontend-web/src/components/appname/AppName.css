@@ -1,0 +1,25 @@
+.app-name {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 500;
+  font-family: "nova square", monospace;
+}
+
+.app-name-dark {
+  color: var(--primary-text-dark);
+}
+
+.app-name-light {
+  color: var(--primary-text);
+}
+
+#tee {
+  color: var(--theme-color);
+}
+
+@media screen and (max-width: 414px) {
+  .app-name {
+    font-size: 2rem;
+    transform: translateY(1rem);
+  }
+}

@@ -1,0 +1,128 @@
+/* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+}
+select {
+  padding-top: 1rem;
+  /* removes default arrow icon for Firefox */
+  -moz-appearance: none;
+  /* removes default arrow icon  for Chrome */
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  font-family: var(--nova-flat);
+  background: inherit;
+  cursor: pointer;
+}
+
+.currency-select-light {
+  color: black;
+}
+
+.currency-select-dark {
+  color: white;
+}
+/* Custom scrollbar for select */
+/* width */
+select::-webkit-scrollbar {
+  background: #aaaaaa21;
+  width: 0.3rem;
+}
+
+/* Track */
+select::-webkit-scrollbar-track {
+  background: #2a2a2b1f;
+  border-radius: 10px;
+}
+
+/* Handle */
+select::-webkit-scrollbar-thumb {
+  background: #0d0f1694;
+}
+
+/* Handle on hover */
+select::-webkit-scrollbar-thumb:hover {
+  background: var(--main-dark);
+}
+/* Individual option */
+.currency-select-light > option {
+  background: var(--main-light);
+  color: #06070c;
+}
+.currency-select-dark > option {
+  color: #f5f5f5;
+  background: var(--main-dark);
+}
+
+#base {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  font-family: var(--nova-flat);
+}
+#base-currency {
+  color: var(--theme-color);
+}
+
+.row {
+  display: flex;
+  background: #aaaaaa21;
+  padding: 0.2rem;
+}
+
+/* input field for currency value input */
+.currency-input-field > input {
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: var(--roboto);
+  width: 70%;
+  border: none;
+  outline: none;
+}
+
+.input-field-light > input {
+  background: #ffffff !important;
+  color: black;
+}
+
+.input-field-dark > input {
+  color: white;
+  background: #06070c48 !important;
+}
+/* use the theme color to highlight the input field on focus */
+.currency-input-field > input:focus {
+  outline: 1px solid var(--theme-color);
+}
+
+/* Removing default arrow from number input field */
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* For Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.convert-button {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.convert-icon {
+  height: 2.5rem;
+  width: 2.5rem;
+}
